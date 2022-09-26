@@ -9,16 +9,19 @@ author1:
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
     An undergraduate from Nankai University.
-                    |
+    
     Majoring in Information Security.
 
   # This photo will be used in the about section
   picture:
-    path:            https://placehold.it/128x128
+    # path:            https://placehold.it/128x128
+    path:            ../assets/icons/tile-small.png
     # srcset is optional, but can be used to provide higher res versions for retina displays
     srcset:
-      1x:            https://placehold.it/128x128
-      2x:            https://placehold.it/256x256
+      # 1x:            https://placehold.it/128x128
+      # 2x:            https://placehold.it/256x256
+      1x:   ../assets/icons/tile-small.png
+      2x:   ../assets/icons/tile-small.png
 
   # Social media icons in sidebar
   # Comment/uncommet to show/hide
