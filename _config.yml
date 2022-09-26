@@ -42,8 +42,8 @@ logo:                  /assets/icons/icon.png
 # This should be the same author as first entry in `_data/authors.yml`.
 # Duplication is necessary due to the `jekyll-feed`, `jekyll-seo-tag` plugin.
 author:
-  name:                <Wenxuan> <Fu>
-  email:               <335957142@qq.com>
+  name:                Wenxuan Fu
+  email:               335957142@qq.com
   # Used by `jekyll-seo-tag`:
   # twitter:             <username>
 
