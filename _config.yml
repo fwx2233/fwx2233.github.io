@@ -19,21 +19,19 @@ baseurl:               ''
 
 # Language of your content in 2-letter code, e.g.: en, de.
 # You may also provide a location, e.g.: en-us, de_AT.
-lang:                  en
+lang:                  ch
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 FuWenxuan's Blog
+title:                 代码鬼才的Blog
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  A Jekyll theme with JavaScript powers. "Best Theme by a Mile".
-  Combines the best of static sites and modern web apps.
-  Open `_config.yml` to edit this text.
+  一个简单的个人空间，平时会在这里放个人阅读论文的笔记等
 
 # A shorter description for the sidebar.
 tagline:               >
-  付文轩的博客，平时会将文章笔记等放到这里
+  会将一些论文笔记、心得等分享在这里
 
 # A list of keywords for your blog
 keywords:              []
