@@ -9,7 +9,8 @@ author1:
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
     An undergraduate from Nankai University.
-    Major in Information Security.
+                    |
+    Majoring in Information Security.
 
   # This photo will be used in the about section
   picture:
