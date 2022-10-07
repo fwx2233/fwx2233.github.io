@@ -1,11 +1,11 @@
 ---
 layout: list
-title: Vulnerability mining
-slug: vm
+title: Paper notes
+slug: p
 menu: true
 order: 1
 description: >
-  Paper notes on vulnerability mining.
+  Paper notes.
 accent_color: '#268bd2'
 accent_image:
   background: '#202020'
