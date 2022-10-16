@@ -70,6 +70,11 @@ Hello(III)Z，表示boolean Hello(int, int, int)
 Hello(Z[I[ILjava/lang/String;J)Ljava/lang/String;，表示String Hello(boolean, int[], int[], string, long)
 ```
 
+* 方法中有的时候会有`.local 1`字样，这个`1`表示该方法会使用1个寄存器
+  * smali语法在逻辑运算的时候，使用的是寄存器，这个`.local`后面的数字只能大于等于寄存器数量
+* p0则通常表示this
+* 通常v2用来保存函数调用的返回值
+
 #### 关键词
 
 ```
@@ -100,3 +105,13 @@ if-ge vA, vB, :cond_**
 ……(和汇编的是一样的)
 ```
 
+
+
+### 安卓常见的破解工具
+
+* 环境设备
+  * 电脑：Java、Python、Eclipse等环境
+  * 手机：ROOT
+  * USB数据线
+* PC工具：Java、Python、Eclipse、AndroidSDK、Apktool、dex2Jar、JD-GUI（这两个比较老了，可以用**Jadx**，也是反编译的工具，但是不能反编译到smali，只能到java层次，适合用来阅读逻辑）、AndroidKiller、Fidder/BuipSuit、Ida Pro、SqliteBrowser、010Editor、JEB等
+* 终端工具：R.E.Explorer、inject、界面劫持工具、mt管理器（之前另一个教程里有用到）、**Xposed Installer框架**（用来执行插件的）
