@@ -7,6 +7,10 @@ author: author1
 
 # DIANE: Identifying Fuzzing Triggers in Apps to Generate Under-constrained Inputs for IoT Devices
 
+一篇关于在App端进行fuzz的文章
+
+
+
 ## 文章信息
 
 **Author:** Nilo Redini*∗* , Andrea Continella*†* , Dipanjan Das*∗* , Giulio De Pasquale*∗* , Noah Spahn*∗* , Aravind Machiry*‡* , Antonio Bianchi*‡* , Christopher Kruegel*∗* , and Giovanni Vigna
@@ -21,8 +25,8 @@ author: author1
 
 ## Abstract
 
-​		Internet of Things (IoT) devices have rooted themselves in the everyday life of billions of people. Thus, researchers have applied automated bug finding techniques to improve their overall security. However, due to the difficulties in extracting and emulating custom firmware, black-box fuzzing is often the only viable analysis option. Unfortunately, this solution mostly produces invalid inputs, which are quickly discarded by the targeted IoT device and do not penetrate its code. Another proposed approach is to leverage the companion app (i.e., the mobile app typically used to control an IoT device) to generate well-structured fuzzing inputs. Unfortunately, the existing solutions produce fuzzing inputs that are constrained by app-side validation code, thus significantly limiting the range of discovered vulnerabilities.
-​		In this paper, we propose a novel approach that overcomes these limitations. Our key observation is that there exist functions inside the companion app that can be used to generate optimal (i.e., valid yet under-constrained) fuzzing inputs. Such functions, which we call fuzzing triggers, are executed before any data-transforming functions (e.g., network serialization), but after the input validation code. Consequently, they generate inputs that are not constrained by app-side sanitization code, and, at the same time, are not discarded by the analyzed IoT device due to their invalid format. We design and develop DIANE, a tool that combines static and dynamic analysis to find fuzzing triggers in Android companion apps, and then uses them to fuzz IoT devices automatically. We use DIANE to analyze 11 popular IoT devices, and identify 11 bugs, 9 of which are zero days. Our results also show that without using fuzzing triggers, it is not possible to generate bug-triggering inputs for many devices.
+&emsp;Internet of Things (IoT) devices have rooted themselves in the everyday life of billions of people. Thus, researchers have applied automated bug finding techniques to improve their overall security. However, due to the difficulties in extracting and emulating custom firmware, black-box fuzzing is often the only viable analysis option. Unfortunately, this solution mostly produces invalid inputs, which are quickly discarded by the targeted IoT device and do not penetrate its code. Another proposed approach is to leverage the companion app (i.e., the mobile app typically used to control an IoT device) to generate well-structured fuzzing inputs. Unfortunately, the existing solutions produce fuzzing inputs that are constrained by app-side validation code, thus significantly limiting the range of discovered vulnerabilities.
+&emsp;In this paper, we propose a novel approach that overcomes these limitations. Our key observation is that there exist functions inside the companion app that can be used to generate optimal (i.e., valid yet under-constrained) fuzzing inputs. Such functions, which we call fuzzing triggers, are executed before any data-transforming functions (e.g., network serialization), but after the input validation code. Consequently, they generate inputs that are not constrained by app-side sanitization code, and, at the same time, are not discarded by the analyzed IoT device due to their invalid format. We design and develop DIANE, a tool that combines static and dynamic analysis to find fuzzing triggers in Android companion apps, and then uses them to fuzz IoT devices automatically. We use DIANE to analyze 11 popular IoT devices, and identify 11 bugs, 9 of which are zero days. Our results also show that without using fuzzing triggers, it is not possible to generate bug-triggering inputs for many devices.
 
 
 
