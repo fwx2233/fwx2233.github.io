@@ -11,7 +11,7 @@ author: author1
 
 
 
-## Imformation
+## 1. Imformation
 
 **Author:** Muslum Ozgur Ozmen[1], Xuansong Li[2], Andrew Chu[3], Z. Berkay Celik[1], Bardh Hoxha[4], Xiangyu Zhang[1]
 
@@ -23,7 +23,7 @@ author: author1
 
 
 
-## Abstract
+## 2. Abstract
 
 &emsp;Smart homes contain diverse sensors and actuators controlled by IoT apps that provide custom automation. Prior works showed that an adversary could exploit physical interaction vulnerabilities among apps and put the users and environment at risk, e.g., to break into a house, an adversary turns on the heater to trigger an app that opens windows when the temperature exceeds a thresh old. Currently, the safe behavior of physical interactions relies on either app code analysis or dynamic analysis of device states with manually derived policies by developers. However, existing works fail to achieve sufficient breadth and fidelity to translate the app code into their physical behavior or provide incomplete security policies, causing poor accuracy and false alarms.
 
@@ -33,7 +33,7 @@ author: author1
 
 
 
-## Contributions
+## 3. Contributions
 
 * **Translating App Source Code into its Physical Behavior**: We translate the actuation commands and sensor events in the app source code into physical execution models to define their physical behavior.
 * **Composition of Interacting Apps**: We introduce a novel composite physical execution model architecture that defines the joint physical behavior of interacting apps.
@@ -43,7 +43,7 @@ author: author1
 
 
 
-## Design Challenges
+## 4. Design Challenges
 
 1. **Correct Physical Interactions.** 
 
@@ -65,7 +65,7 @@ author: author1
 
 
 
-## IoTSEER Design
+## 5. IoTSEER Design
 
 ![image-20221107182918598](../Images/image-20221107182918598.png)
 
@@ -73,7 +73,7 @@ author: author1
 
 
 
-### Generic Offline Module
+### 5.1. Generic Offline Module
 
 1. **Static App Analysis**
 
@@ -164,7 +164,7 @@ author: author1
 
 
 
-### **Deployment-specific Module**
+### 5.2. **Deployment-specific Module**
 
 需要设置具体的设备参数，以确保CPEM精确模拟应用程序的物理行为。根据上一节所述，具体的参数有两个：设备的特征值和距离。
 
@@ -195,7 +195,7 @@ author: author1
 
 
 
-###  **Security Analysis Module**
+###  5.3. **Security Analysis Module**
 
 > 以下这部分，尤其是后面优化过后的验证，没有看懂
 

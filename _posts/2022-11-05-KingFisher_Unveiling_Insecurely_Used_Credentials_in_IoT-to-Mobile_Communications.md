@@ -11,7 +11,7 @@ author: author1
 
 
 
-## 文章信息
+## 1. 文章信息
 
 **Author:** YiweiZhang[1], Siqi Ma[2], Juanru Li[1], Dawu Gu[1], Elisa Bertino[3]
 
@@ -23,20 +23,20 @@ author: author1
 
 
 
-## Abstract
+## 2. Abstract
 
 &emsp;Today users can access and/or control their IoT devices using mobile apps. Such interactions often rely on IoTto-Mobile communication that supports direct data exchanges between IoT devices and smartphones. To guarantee mutual authentication and encrypted data transmission in IoT-to-Mobile communications while keeping lightweight implementation, IoT devices and smartphones often share credentials in advance with the help of a cloud server. Since these credentials impact communication security, in this paper we seek to understand how such sensitive materials are implemented. We design a set of analysis techniques and implement them in KINGFISHER, an analysis framework. KINGFISHER identifies shared credentials, tracks their uses, and examines violations against nine security properties that the implementation of credentials should satisfy. With an evaluation of eight real-world IoT solutions with more than 35 million deployed devices, KINGFISHER revealed that all these solutions involve insecurely used credentials, and are subject to privacy leakage or device hijacking.
 
 
 
-## Core Idea
+## 3. Core Idea
 
 1. 设计出9条原则（分为MUST和SHOULD两个等级）；
 2. 实现了KINGFISHER工具，利用此工具检测是否存在漏洞（不符合9条原则中的任意一条都认为是存在脆弱性）。
 
 
 
-## Threats Against Shared Credentials
+## 4. Threats Against Shared Credentials
 
 &emsp;在本文中，作者将Shared Credential(SC)分为两种：authentication SC(ASC)和cryptographic SC(CSC)，其中ASC在认证时使用，CSC则对消息进行加密。
 
@@ -48,7 +48,7 @@ author: author1
 
 &emsp;在以上过程中，使用SC时可能会出现一定问题，从而产生威胁。相关威胁模型如下图所示：
 
-<img src="../Images/image-20221104185933422.png" alt="image-20221104185933422" style="zoom:45%;" />
+![image](../Images/image-20221104185933422.png)
 
 攻击模型设置：
 
@@ -57,13 +57,13 @@ author: author1
 
 基于以上攻击模型，可能产生如下攻击方式：
 
-1. 攻击者未造成合法用户的终端来欺骗IoT设备，或者攻击（不安全的）SC分发机制并获取SC；
+1. 攻击者伪造成合法用户的终端来欺骗IoT设备，或者攻击（不安全的）SC分发机制并获取SC；
 2. 此外，攻击者可以冒充云服务器（脆弱的第三方）分发虚假的SCs或获取报告的SCs；
 3. 最后，攻击者可以重放攻击：当取消绑定操作后，如果sc没有被撤销(可重用sc)，则会危及设备到终端的通信。
 
 
 
-## Nine Security Properties
+## 5. Nine Security Properties
 
 1. **随机性原则**。SC**必须**防止暴力攻击和猜测攻击。为了实现这一特性，最佳实践是使用由强加密伪随机数生成器(PRNG)构造的部分生成sc。根据RFC6749中OAuth 2.0和IPsec中加密密钥的安全考虑，攻击者猜出生成的sc的概率必须小于等于2^−128^，且应小于等于2^−160^。考虑到可用性和安全性，作者得出结论SC至少应该包含128位的随机数；
 
@@ -92,34 +92,32 @@ author: author1
 
 
 
-## DETECTING INSECURELY USED SHARED CREDENTIALS
+## 6. DETECTING INSECURELY USED SHARED CREDENTIALS
+
+整体工作流程为：
+
+![image-20221108153043876](../Images/image-20221108153043876.png)
 
 KINGFISHER主要是基于两个分析：
 
 1. 由于物联网厂商通常会定制他们的专有协议来构建物联网到移动的通信，而不披露规范和协议格式。因此，识别与SCs相关的功能和网络流量具有挑战性。本文作者分析app的代码和网络流量，以收集与SCs相关的function和数据包；
 2. 基于值的分析，用于检测用于物联网到移动通信的SCs，并标记包含这些SCs的相应函数。其主要挑战是，由于SCs是由物联网设备或物联网云生成的，因此很难跟踪每个SC的数据流。与应用程序生成的凭证不同，SCs通常通过多处理（例如，绑定器IPC机制）和多线程进行处理，这涉及Java代码和本机代码。因此，现有的分析技术[38]、[39]不能精确地跟踪SC的数据流，因为它们不能同时分析用多种语言编写的部分的代码。因此，KINGFISHER使用基于值的比较方式，这是数据流级别的一种代码独立的方法，来检测SCs和处理SCs的功能，而不需要关于编码SCs所遵循的标准/格式的信息。
 
-整体工作流程为：
-
-![image-20221108153043876](../Images/image-20221108153043876.png)
-
-### Function Interface Identifification
+### 6.1. Function Interface Identifification
 
 &emsp;为了从一个配套的应用程序中获得SC，KINGFISHER可以识别出可能直接/间接依赖于SC的与SC相关的候选数据。由于SC可以通过云创建，也可以在物联网设备和智能手机之间进行本地协商，因此KINGFISHER可以探索动态加载功能，并根据SC的使用情况进一步识别候选者。特别是，KINGFISHER首先通过ClassLoader提取在应用程序执行过程中加载的所有函数。然后进行基于关键字的搜索，以检索与sc相关的候选对象。对于关键字匹配，作者手动构建了一个引用集，其中包含一个通常用于命名与sc相关的函数的函数名列表。关于SCs的使用，它们通常用于用户认证和授权、加密算法和数据保护。因此，作者从前100个物联网应用程序项目中手动探索了与sc相关的功能，以及Github和stack溢出上的样本代码，以提取相关的关键字（如“encrypt”、“build”、“token”）。给定一个参考集，KINGFISHER将动态加载的函数与该集中的所有关键字进行比较。如果任何关键字被包含为函数名的subword，则函数被标记为与sc相关的候选项。KINGFISHER在SC函数候选列表中包含与SC相关的候选项的函数原型（即函数名、参数类型、返回类型）。
 
-
-
-### Message Collection
+### 6.2. Message Collection
 
 KINGFISHER进一步动态收集通过相应的sc相关候选函数的值，并进行网络流量分析。
 
-#### Function Value Collection
+#### 6.2.1. Function Value Collection
 
 &emsp;为了区分SC，作者构建了一个基于Frida的仪器组件来跟踪SC函数候选列表中每个候选项的函数参数值和返回值。与通常用高级Java代码编写的常见函数不同，通过网络通信进行的SC传输涉及到Java代码和本机代码中的函数，也就是说，与SC相关的候选代码可能存在于Java代码或本机代码中。
 
 &emsp;对于本机代码，KINGFISHER将每个与sc相关的函数的参数和返回变量分类为“指针”变量和“非指针”变量。对于每个指针变量，KINGFISHER都是通过提取所指向的地址来获得变量值，并进一步访问地址的对应内存块，以“00”序列结束，以收集存储在内存块中的值。由于参数变量可能会在函数内进行处理，因此它们的值可能会被修改。KINGFISHER因此记录了每个变量的初始值和最终值。或者，KINGFISHER也可以直接记录非指针变量的运行时值。关于变量值的所有信息都存储在函数信息列表中，与与sc相关的候选对齐。
 
-#### Traffic Clustering
+#### 6.2.2. Traffic Clustering
 
 &emsp;KINGFISHER通过分析网络流量来识别物联网到移动的通信数据包。
 
@@ -130,17 +128,17 @@ KINGFISHER进一步动态收集通过相应的sc相关候选函数的值，并�
 
 
 
-### Value-based Analysis
+### 6.3. Value-based Analysis
 
 以上一步的通信数据包为输入，通过比较值识别SC。
 
-#### Coarse Candidate Selection
+#### 6.3.1. Coarse Candidate Selection
 
 &emsp;由于收集了大量的候选包和网络包，KINGFISHER首先过滤掉不相关的候选包。它将存储在函数信息列表中的值（即，参数值和返回值）与IoT-to-Mobile通信数据包列表中的数据包的值进行比较。如果函数值不包括任何数据包值，则KINGFISHER认为此候选项是不相关的。其余的候选函数被标记为initial funtions，它们是直接依赖于所涉及的SC的数据。
 
 &emsp;此外，由于每个初始函数的返回值也可能被其他函数（即间接依赖于SC的数据）所控制，因此KINGFISHER则会跟踪所有这些函数来探索完整的SC数据流。具体来说，它将每个返回值与其他候选项的参数值进行比较，如果它的任何参数值与返回值匹配，则将每个参数值标记为相关函数。KINGFISHER迭代识别相关函数，直到没有找到相关函数。
 
-#### Fine-grained SC Recognition
+#### 6.3.2. Fine-grained SC Recognition
 
 &emsp;根据相关功能及其值，KINGFISHER接下来识别所使用的SCs，即ASC和CSC。通过人工观察，作者发现大多数ASCs以JSON格式或基于JSON Web Token格式编码，CSCs通常作为加密函数的参数。KINGFISHER进一步检验了SC值。如果一个值包含一个Base64字符串序列，KINGFISHER将该值视为ASC。否则，当一个值是JSON格式时，KINGFISHER将解析JSON字符串以从特定字段[46]，[47]中提取值，该字段被标记为ASC。或者，如果用作加密函数的加密密钥，则它将值标记为CSC。由于一些加密函数是定制的，因此很难找到其加密密钥的参数。为了解决这一问题，作者手动抽象了加密密钥的共同特征，即： 
 
@@ -153,7 +151,7 @@ KINGFISHER进一步动态收集通过相应的sc相关候选函数的值，并�
 
 
 
-### Security Violation Detection
+### 6.4. Security Violation Detection
 
 识别出了待检测的SC以后，只需要和之前提出的9条原则进行比对，看是否违反即可。
 
@@ -183,7 +181,7 @@ KINGFISHER进一步动态收集通过相应的sc相关候选函数的值，并�
 
 
 
-## Example
+## 7. Example
 
 本文作者以Tuya为例演示KINGFISHER的工作流程。
 
@@ -212,7 +210,7 @@ KINGFISHER工作流程：
 
 
 
-## Attack
+## 8. Attack
 
 1. **Device Hijacking**：由于SCs由物联网设备和配套应用程序共享，易受攻击的SCs不仅会导致设备数据注入，还会导致设备劫持。也就是说，如果攻击者获得了SCs，攻击者将能够构建设备控制命令和消息，其中包括SCs（用于身份验证或加密）。与数据注入攻击一样，如果攻击者获得了BroadLinksc，则可以使用它们来构建与设备消息具有相同协议的用户消息。因此，攻击者可以模拟合法的同伴应用程序来发送假命令来控制该设备。
 2. **Data Injection**：当攻击者获得物联网到移动通信中使用的ASC时，攻击者可以伪造设备状态消息。因此，来自“设备”的数据不能被信任。以BroadLink为例，由于它所使用的ASC和CSC相等，攻击者也可以在获得CSC后获得ASC。此外，BroadLink物联网到移动的通信协议可以通过反向配套应用程序来恢复。因此，攻击者能够使用ASC构建合法的消息。由于IoT-toMobile的通信安全仅由SCs来保证，因此，如果用户使用相同的SCs，则无法区分伪造的消息和实际的设备消息。当设备所有者配置操作触发器规则时，这将更加危险，这些规则具有级联效应，从而导致自动执行其他操作。
