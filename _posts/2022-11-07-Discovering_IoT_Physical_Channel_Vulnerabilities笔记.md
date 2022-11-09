@@ -27,9 +27,9 @@ author: author1
 
 &emsp;Smart homes contain diverse sensors and actuators controlled by IoT apps that provide custom automation. Prior works showed that an adversary could exploit physical interaction vulnerabilities among apps and put the users and environment at risk, e.g., to break into a house, an adversary turns on the heater to trigger an app that opens windows when the temperature exceeds a thresh old. Currently, the safe behavior of physical interactions relies on either app code analysis or dynamic analysis of device states with manually derived policies by developers. However, existing works fail to achieve sufficient breadth and fidelity to translate the app code into their physical behavior or provide incomplete security policies, causing poor accuracy and false alarms.
 
-&emsp;In this paper, we introduce a new approach, IoTSeer, which ef ficiently combines app code analysis and dynamic analysis with new security policies to discover physical interaction vulnerabili ties. IoTSeer works by first translating sensor events and actuator commands of each app into a physical execution model (PeM) and unifying PeMs to express composite physical execution of apps (CPeM). CPeM allows us to deploy IoTSeer in different smart homes by defining its execution parameters with minimal data collection. IoTSeer supports new security policies with intended/unintended physical channel labels. It then efficiently checks them on the CPeM via falsification, which addresses the undecidability of verification due to the continuous and discrete behavior of IoT devices.
+&emsp;In this paper, we introduce a new approach, IoTSeer, which ef ficiently combines app code analysis and dynamic analysis with new security policies to discover physical interaction vulnerabili ties. IoTSeer works by first translating sensor events and actuator commands of each app into a physical execution model (PEM) and unifying PEMs to express composite physical execution of apps (CPEM). CPEM allows us to deploy IoTSeer in different smart homes by defining its execution parameters with minimal data collection. IoTSeer supports new security policies with intended/unintended physical channel labels. It then efficiently checks them on the CPEM via falsification, which addresses the undecidability of verification due to the continuous and discrete behavior of IoT devices.
 
-&emsp;We evaluate IoTSeer in an actual house with 14 actuators, six sensors, and 39 apps. IoTSeer discovers 16 unique policy violations, whereas prior works identify only 2 out of 16 with 18 falsely flagged violations. IoTSeer only requires 30 mins of data collection for each actuator to set the CPeM parameters and is adaptive to newly added, removed, and relocated devices.
+&emsp;We evaluate IoTSeer in an actual house with 14 actuators, six sensors, and 39 apps. IoTSeer discovers 16 unique policy violations, whereas prior works identify only 2 out of 16 with 18 falsely flagged violations. IoTSeer only requires 30 mins of data collection for each actuator to set the CPEM parameters and is adaptive to newly added, removed, and relocated devices.
 
 
 
@@ -37,7 +37,7 @@ author: author1
 
 * **Translating App Source Code into its Physical Behavior**: We translate the actuation commands and sensor events in the app source code into physical execution models to define their physical behavior.
 * **Composition of Interacting Apps**: We introduce a novel composite physical execution model architecture that defines the joint physical behavior of interacting apps.
-* **Physical Channel Policy Validation**: We develop new security policies with intended/unintended physical channel labels. We formally validate the policies on CPeM through optimization-guided falsification.
+* **Physical Channel Policy Validation**: We develop new security policies with intended/unintended physical channel labels. We formally validate the policies on CPEM through optimization-guided falsification.
 * **Evaluation in an Actual House**: We use IoTSeer in a real house containing 14 actuators and six sensors and expose 16 physical channel policy violations.
 * IoTSeer code is available at [github](https://github.com/purseclab/IoTSeer) for public use and validation.
 
@@ -69,7 +69,7 @@ author: author1
 
 ![image-20221107182918598](../Images/image-20221107182918598.png)
 
-整体思路：为IoT的App进行建模，形成Physical Execution Model(PEM) --> 多个PEM结合，形成Composite Physical Execution Model(CPEM) --> 给CPEM设置相关参数 --> 建立物理通道应当满足的规则 --> 利用设置好参数的CPEM检测，看是否违反相关规则。
+整体思路：为IoT的App进行建模，形成Physical Execution Model(PEM, 是hybrid I/O automation) --> 多个PEM结合，形成Composite Physical Execution Model(CPEM) --> 给CPEM设置相关参数 --> 建立物理通道应当满足的规则 --> 利用设置好参数的CPEM检测，看是否违反相关规则。
 
 
 
@@ -93,7 +93,7 @@ author: author1
 
    目的：构建对应的PEM
 
-   解决方法：将应用程序的每个command和sensor event转换为用混合I/O自动机表示的PeM，该过程首先为命令影响的每个物理通道构建单独的PeM，并通过基于物理的建模观察传感器事件。基于物理的建模将控制理论中的通用微分或代数方程集成到PeM中，以建模每个应用程序的物理行为。这种方法被广泛应用于机器人车辆(例如，预测RV的传感器值)和自动驾驶车辆(例如，建模汽车和行人的运动）。
+   解决方法：将应用程序的每个command和sensor event转换为用混合I/O自动机表示的PEM，该过程首先为命令影响的每个物理通道构建单独的PEM，并通过基于物理的建模观察传感器事件。基于物理的建模将控制理论中的通用微分或代数方程集成到PEM中，以建模每个应用程序的物理行为。这种方法被广泛应用于机器人车辆(例如，预测RV的传感器值)和自动驾驶车辆(例如，建模汽车和行人的运动）。
 
    初始时，IoTSEER会认为每个命令可能会影响所有物理通道，并之后在特定于部署的模块中删除过度近似的通道
 
@@ -103,11 +103,11 @@ author: author1
 
      **关于流函数的两个参数如何确定，将在后续的步骤介绍**
 
-   * **PEMs for Sensor Events**：作者将事件的PeM定义为混合单状态的I/O自动机(with single state)，Q={on}，并且每经过时间t（传感器对其测量数据采样的频率）就会产生一次自跃迁。
+   * **PEMs for Sensor Events**：作者将事件的PEM定义为混合单状态的I/O自动机(with single state)，Q={on}，并且每经过时间t（传感器对其测量数据采样的频率）就会产生一次自跃迁。
 
      ![image2](../Images/image-20221107194858843.png)
 
-     Sensor Event PEM接受一个灵敏度级别参数，该参数定义物理通道中的最小更改量(threshold)，以改变传感器的读数。阈值函数输出传感器读数，指示物理通道水平是否等于或大于灵敏度水平。如果传感器测量布尔类型的值(例如，是否运动)，PeM输出一个位表示“检测到”或“未检测到”事件；如果传感器进行数值读数(如温度)，则输出数值。
+     Sensor Event PEM接受一个灵敏度级别参数，该参数定义物理通道中的最小更改量(threshold)，以改变传感器的读数。阈值函数输出传感器读数，指示物理通道水平是否等于或大于灵敏度水平。如果传感器测量布尔类型的值(例如，是否运动)，PEM输出一个位表示“检测到”或“未检测到”事件；如果传感器进行数值读数(如温度)，则输出数值。
 
    最终，作者利用以上的方式在IoTSEER中集成了总共24个Command PEM(例如，`heater-on`，`door-unlock`)，它们影响总共6个物理通道，即temperature、humidity、illuminance、sound、motion和smoke，以及6个测量这些通道对应的Sensor Event PEM。
 
@@ -239,13 +239,13 @@ author: author1
 
 2. **Validating Policies on CPEM**
 
-   在用Metric Temporal Logic (MTL) 表示确定的策略后，IoTSeer执行CPeM（混合I/O自动机），并收集执行器和传感器的trace以验证策略。在每次执行时，CPeM将应用程序的激活时间作为输入，即应用程序调用其命令和命令PeM转换到“on”状态的时间。CPeM模拟命令和传感器事件的统一物理行为，并输出PeM的轨迹。轨迹（v, t）由一个周期时间戳t和一个物理信道值v组成。每个命令PeM的v显示它对通道的影响程度，而每个传感器事件PeM的v显示它的测量值。这些跟踪还包括命令/事件的标签（Int/UnInt）和应用程序id。
+   在用Metric Temporal Logic (MTL) 表示确定的策略后，IoTSeer执行CPEM（混合I/O自动机），并收集执行器和传感器的trace以验证策略。在每次执行时，CPEM将应用程序的激活时间作为输入，即应用程序调用其命令和命令PEM转换到“on”状态的时间。CPEM模拟命令和传感器事件的统一物理行为，并输出PEM的轨迹。轨迹（v, t）由一个周期时间戳t和一个物理信道值v组成。每个命令PEM的v显示它对通道的影响程度，而每个传感器事件PEM的v显示它的测量值。这些跟踪还包括命令/事件的标签（Int/UnInt）和应用程序id。
 
    * **Policy Validation Challenges**
 
-     物理通道值和应用程序激活时间是连续的；因此，CPeM的状态空间变得无限大，这使得CPeM上的正式验证方法（如模型检查）无法决定.
+     物理通道值和应用程序激活时间是连续的；因此，CPEM的状态空间变得无限大，这使得CPEM上的正式验证方法（如模型检查）无法决定.
 
-     为了解决这个问题，作者首先实现了一种网格测试方法，网格测试确定CPeM是否满足有限的应用程序激活时间集下的策略——应用程序调用驱动命令的时间。如下算法提出了对CPeM进行策略验证的网格测试方法，作者将应用程序的激活时间设置为一个网格（t0：Δt：tend）（第3行）。该算法通过搜索激活时间组合来执行CPeM。然后，它使用鲁棒性度量（第4-6行）验证来自pem的每个执行跟踪上的策略，其中负的鲁棒性值表示违反了策略。
+     为了解决这个问题，作者首先实现了一种网格测试方法，网格测试确定CPEM是否满足有限的应用程序激活时间集下的策略——应用程序调用驱动命令的时间。如下算法提出了对CPEM进行策略验证的网格测试方法，作者将应用程序的激活时间设置为一个网格（t0：Δt：tend）（第3行）。该算法通过搜索激活时间组合来执行CPEM。然后，它使用鲁棒性度量（第4-6行）验证来自PEM的每个执行跟踪上的策略，其中负的鲁棒性值表示违反了策略。
 
      ![image-20221108105052170](../Images/image-20221108105052170.png)
 
@@ -253,16 +253,16 @@ author: author1
 
    * **Optimization-Guided Falsification.**
 
-     伪造是一种正式的分析技术，它从连续输入集[1,7]中搜索MTL策略的反例。图6描述了利用伪造来搜索导致CPeM上的策略违反的交互应用程序的方法。
+     伪造是一种正式的分析技术，它从连续输入集[1,7]中搜索MTL策略的反例。图6描述了利用伪造来搜索导致CPEM上的策略违反的交互应用程序的方法。
 
      ![image-20221108105107806](../Images/image-20221108105107806.png)
 
      具体来说：
 
      1. 使用一种优化算法，通过采样激活时间来搜索策略违反；
-     2. 执行CPeM和记录执行器和传感器的痕迹；
+     2. 执行CPEM和记录执行器和传感器的痕迹；
      3. 从trace中，我们计算一个鲁棒性值，以量化MTL公式与策略违反的距离；
-     4. 然后采样器在范围内将另一个输入到CPeM下一个种子（类似fuzz中的输入突变）。采样器的目标是最小化查找违反策略的鲁棒性
+     4. 然后采样器在范围内将另一个输入到CPEM下一个种子（类似fuzz中的输入突变）。采样器的目标是最小化查找违反策略的鲁棒性
 
      输入生成的终止标准是指违反策略或满足用户定义的最大迭代次数。
 
