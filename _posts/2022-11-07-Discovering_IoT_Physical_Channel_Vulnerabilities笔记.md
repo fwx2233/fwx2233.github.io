@@ -53,7 +53,7 @@ author: author1
 
    之前的工作基于设备的用例定义安全规则，以防止物理交互漏洞。但是这些规则不考虑意外交互，这些交互发生在设备和应用程序的预期使用之外，并在智能家居中意外触发动作。如：
 
-   <img src="../Images/image-20221107181651585.png" alt="image-20221107181651585" style="zoom:50%;" />
+   ![image1](../Images/image-20221107181651585.png)
 
 3. **Run-time Dilemmas.** 
 
@@ -105,7 +105,7 @@ author: author1
 
    * **PEMs for Sensor Events**：作者将事件的PeM定义为混合单状态的I/O自动机(with single state)，Q={on}，并且每经过时间t（传感器对其测量数据采样的频率）就会产生一次自跃迁。
 
-     <img src="../Images/image-20221107194858843.png" alt="image-20221107194858843" style="zoom:65%;" />
+     ![image2](../Images/image-20221107194858843.png)
 
      Sensor Event PEM接受一个灵敏度级别参数，该参数定义物理通道中的最小更改量(threshold)，以改变传感器的读数。阈值函数输出传感器读数，指示物理通道水平是否等于或大于灵敏度水平。如果传感器测量布尔类型的值(例如，是否运动)，PeM输出一个位表示“检测到”或“未检测到”事件；如果传感器进行数值读数(如温度)，则输出数值。
 
@@ -117,7 +117,7 @@ author: author1
 
    算法伪代码如下：
 
-   <img src="../Images/image-20221107195936185.png" alt="image-20221107195936185" style="zoom:50%;" />
+   ![image3](../Images/image-20221107195936185.png)
 
    该算法首先通过匹配Sensor Event和命令的物理通道来识别交互应用程序。
 
@@ -126,7 +126,11 @@ author: author1
      * 对于物理通道，作者添加了从Sensor Event PEM (Hs)到Commend PEM (Ha)的转换(第5-12行)。
      * 对于软件通道，如果应用程序在a1发生时调用a2，则添加从Command PEM (Ha1)到另一个Commad PEM (Ha2)的转换(第13-17行)。
 
-   以上的转换操作用`UNIFY()`操作符表示，其中包括的转换方式有：<img src="../Images/image-20221107200730271.png" alt="image-20221107200730271" style="zoom:38%;" />，其中<img src="../Images/image-20221107200806864.png" alt="image-20221107200806864" style="zoom:50%;" />是物理通道上的影响，<img src="../Images/image-20221107200834057.png" alt="image-20221107200834057" style="zoom:50%;" />是软件通道。
+   以上的转换操作用`UNIFY()`操作符表示，其中包括的转换方式有：
+
+   ![im](../Images/image-20221107200730271.png)
+
+   其中![ima](../Images/image-20221107200806864.png)是物理通道上的影响，![ee](../Images/image-20221107200834057.png)是软件通道。
 
    一个例子：
 
@@ -146,14 +150,17 @@ author: author1
 
    解决方法：传感器可以测量多个命令的累积影响。为此，作者定义了一个聚合运算符(AGG)，它组合了`UNIFY(Ha, Hs)`操作符，以便Sensor Event PEM将Command PEM的聚合输出作为输入(第18-19行)。还是以上面的例子说明，App4和App5的转换可以改写为
 
-   <img src="../Images/image-20221107201532579.png" alt="image-20221107201532579" style="zoom:80%;" />
-
+   ![iamge5](../Images/image-20221107201532579.png)
+   
    AGG运算符的输出是基于物理通道的单位定义的：
-
+   
    * 对于线性范围的通道（如温度），其输出为Command PEM输出的求和；
-   * 对于log范围的通道（如音量），其输出将会转换成线性后进行聚合，即<img src="../Images/image-20221107201808794.png" alt="image-20221107201808794" style="zoom:40%;" />
-
-   与此同时，物理通道的另一个特性是物理通道(pj)可能取决于另一个通道(pi)（例如，当环境温度升高时，空气-水容量增加，影响湿度传感器的读数）。如果pi的变化影响pj，一个Sensor Event PEM的输出可能会影响另一个Sensor Event PEM的读数。Generic PEM允许我们轻松地识别依赖性，通过迭代获取每个Sensor Event PEM并检查它是否用于另一个Sensor Event的阈值函数(第20-23行)。为了解决这个问题，作者使用<img src="../Images/image-20221107202240990.png" alt="image-20221107202240990" style="zoom:45%;" />表示从温度传感器的PEM输出到湿度传感器PEM的输入转换。
+   
+   * 对于log范围的通道（如音量），其输出将会转换成线性后进行聚合，即
+   
+     ![ee](../Images/image-20221107201808794.png)
+   
+   与此同时，物理通道的另一个特性是物理通道(pj)可能取决于另一个通道(pi)（例如，当环境温度升高时，空气-水容量增加，影响湿度传感器的读数）。如果pi的变化影响pj，一个Sensor Event PEM的输出可能会影响另一个Sensor Event PEM的读数。Generic PEM允许我们轻松地识别依赖性，通过迭代获取每个Sensor Event PEM并检查它是否用于另一个Sensor Event的阈值函数(第20-23行)。为了解决这个问题，作者使用![e](../Images/image-20221107202240990.png)表示从温度传感器的PEM输出到湿度传感器PEM的输入转换。
 
 
 
@@ -200,7 +207,7 @@ author: author1
 
    如果一个应用程序的描述没有表明一个活动，或没有一个命令与该活动的语义相关，IoTSEER将根据应用程序的传感器事件分配标签。这些以运动或声音传感器事件为条件的应用程序被用于检测智能家居中用户和入侵者的存在。例如下图中：
 
-   <img src="../Images/image-20221107181651585.png" alt="image-20221107181651585" style="zoom:50%;" />
+   ![e](../Images/image-20221107181651585.png)
 
    App2当检测到运动时打开灯、开门，用于在用户存在时触发。IoTSeer为此类应用程序的所有命令分配了UnInt标签，因为只有对于用户和入侵者来说，这种操作才是intended。
 
