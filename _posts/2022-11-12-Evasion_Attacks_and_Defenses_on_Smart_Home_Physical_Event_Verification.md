@@ -7,7 +7,9 @@ author: author1
 
 # Evasion Attacks and Defenses on Smart Home Physical Event Verification
 
-一篇防止物理通道逃逸攻击的文章，依旧是Z. Berkay Celik的团队做的，[原文链接](https://www.researchgate.net/publication/364562061_Evasion_Attacks_and_Defenses_on_Smart_Home_Physical_Event_Verification)
+一篇防止物理通道逃逸攻击的文章，依旧是Z. Berkay Celik的团队做的，[原文链接](https://www.researchgate.net/publication/364562061_Evasion_Attacks_and_Defenses_on_Smart_Home_Physical_Event_Verification)。
+
+组会演示[PDF](../pdfs/11.16组会_Evasion.pdf)
 
 ## 1. Information
 
