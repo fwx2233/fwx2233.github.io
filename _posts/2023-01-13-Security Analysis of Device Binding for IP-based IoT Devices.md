@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Binding Analysis
-tags: [p]
+tags: [paper]
 author: author1
 ---
 

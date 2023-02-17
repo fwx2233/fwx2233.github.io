@@ -1,7 +1,7 @@
 ---
 layout: post
 title: KINGFISHER
-tags: [p]
+tags: [paper]
 author: author1
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DIANE notes
-tags: [p]
+tags: [paper]
 author: author1
 ---
 

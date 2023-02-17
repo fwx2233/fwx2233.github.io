@@ -1,7 +1,7 @@
 ---
 layout: post
 title: IoTSEER
-tags: [p]
+tags: [paper]
 author: author1
 ---
 
