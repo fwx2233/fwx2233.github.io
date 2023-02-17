@@ -24,7 +24,7 @@ author: author1
 
 ## 1. mitmproxy
 
-这是一个作为中间人代理的工具，功能非常强大，我目前也只是粗略的学习了一下，达到了我现在能够使用的程度，详细内容推荐学习[官方文档](https://docs.mitmproxy.org/stable/)。
+这是一个作为中间人代理的工具，功能非常强大，我目前也只是粗略的学习了一下，达到了我现在能够使用的程度，详细内容推荐学习[官方文档](https://docs.mitmproxy.org/stable/)。同时由于安卓7之后的版本在证书校验方面增加了一些机制，仅是将mitm的证书安装到user层是无法得到认可的，我们需要将证书安装到system层次下，安装过程可以参考[Configuring Burp Suite With Android Nougat](https://blog.ropnop.com/configuring-burp-suite-with-android-nougat)（在后续的SSL pinning绕过中的参考链接里也会提到）。
 
 在网上搜索大多数的教程都会以`mitmproxy`命令直接启动程序，这种启动只能捕获HTTP和HTTPS的流量，但是我们本次实验中需要捕获的还有非HTTP流量（如TCP），并且APP可以检测出此时手机是否经过代理，如果检测到经过代理则可以选择拒绝服务或者干脆不走系统代理，这种机制会对我们开启代理抓包造成一定阻碍，所以我们需要使用mitmproxy的**透明模式**，启动指令为`mitmproxy --mode transparent --tcp-host '.*'`（具体请参考官方文档，可能会因为版本不同有所改变）。下图为mitmproxy在透明模式下的工作原理示意图（图源：mitmproxy官方文档）：
 
@@ -69,7 +69,7 @@ sudo iptables -t nat -A PREROUTING -i $WIRELESS_CARD -p tcp --dport 8883 -j REDI
 
 ## 3. SSL pinning绕过
 
-关于安卓如何校验SSL的说明、什么是SSL pinning技术的介绍网上有很多，就不多赘述了。这里我主要是想分享一下我自己使用的两种方式（也是在网上找到的，现在有些找不到之前的博客了，我就先写在这里分享一下，侵删）。
+关于安卓如何校验SSL的说明、什么是SSL pinning技术的介绍网上有很多，就不多赘述了。这里我主要是想分享一下我自己使用的两种方式（也是在网上找到的，可以参考这篇[Hail Frida!! The Universal SSL pinning bypass for Android applications](https://infosecwriteups.com/hail-frida-the-universal-ssl-pinning-bypass-for-android-e9e1d733d29)，侵删）。
 
 虽然说是两种方式，但是都需要使用Frida，只是一个使用外置脚本，另一个是使用已经集成在Frida中的工具，两种应该是差不多的工作方式（我没有细看hook的代码，但既然都是比较通用的方法，可能是差不多的）。
 
