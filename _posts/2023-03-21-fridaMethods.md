@@ -400,7 +400,7 @@ Java.perform(
 )
 ```
 
-
+还有一种解决方式是通过使用js中的反射机制，详情可以查看我的另一篇文章：[使用Frida去hook一些奇奇怪怪的函数名](https://fwx2233.github.io/2023/03/03/Firda_Hook_Unicode_Function/)
 
 # wallbreaker
 
