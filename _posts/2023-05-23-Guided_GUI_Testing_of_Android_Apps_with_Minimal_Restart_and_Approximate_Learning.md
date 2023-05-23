@@ -6,6 +6,8 @@ author: author1
 ---
 # Guided GUI Testing of Android Apps with Minimal Restart and Approximate Learning
 
+一篇对安卓GUI界面进行状态机建立、测试的文章，原文链接：[SwiftHand](https://dl.acm.org/doi/10.1145/2509136.2509552)
+
 ## Information
 
 Authors: Wontae Choi, George Necula, Koushik Sen
@@ -13,8 +15,6 @@ Authors: Wontae Choi, George Necula, Koushik Sen
 Year: 2013
 
 Conference: Proceedings of the 2013 ACM SIGPLAN international conference on Object oriented programming systems
-
-Paper Link: [SwiftHand](https://dl.acm.org/doi/10.1145/2509136.2509552)
 
 ## Abstract
 
