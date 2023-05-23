@@ -18,15 +18,15 @@ Conference: Proceedings of the 2013 ACM SIGPLAN international conference on Obje
 
 ## Abstract
 
-    Smartphones and tablets with rich graphical user interfaces (GUI) are becoming increasingly popular. Hundreds of thousands of specialized applications, called apps, are available for such mobile platforms. Manual testing is the most popular technique for testing graphical user interfaces of such apps. Manual testing is often tedious and error-prone. In this paper, we propose an automated technique, called SwiftHand, for generating sequences of test inputs for Android apps. The technique uses machine learning to learn a model of the app during testing, uses the learned model to generate user inputs that visit unexplored states of the app, and uses the execution of the app on the generated inputs to refine the model. A key feature of the testing algorithm is that it avoids restarting the app, which is a significantly more expensive operation than executing the app on a sequence of inputs. An important insight behind our testing algorithm is that we do not need to learn a precise model of an app, which is often computationally intensive, if our goal is to simply guide test execution into unexplored parts of the state space. We have implemented our testing algorithm in a publicly available tool for Android apps written in Java. Our experimental results show that we can achieve significantly better coverage than traditional random testing and L∗-based testing in a given time budget. Our algorithm also reaches peak coverage faster than both random and L∗-based testing.
+​	Smartphones and tablets with rich graphical user interfaces (GUI) are becoming increasingly popular. Hundreds of thousands of specialized applications, called apps, are available for such mobile platforms. Manual testing is the most popular technique for testing graphical user interfaces of such apps. Manual testing is often tedious and error-prone. In this paper, we propose an automated technique, called SwiftHand, for generating sequences of test inputs for Android apps. The technique uses machine learning to learn a model of the app during testing, uses the learned model to generate user inputs that visit unexplored states of the app, and uses the execution of the app on the generated inputs to refine the model. A key feature of the testing algorithm is that it avoids restarting the app, which is a significantly more expensive operation than executing the app on a sequence of inputs. An important insight behind our testing algorithm is that we do not need to learn a precise model of an app, which is often computationally intensive, if our goal is to simply guide test execution into unexplored parts of the state space. We have implemented our testing algorithm in a publicly available tool for Android apps written in Java. Our experimental results show that we can achieve significantly better coverage than traditional random testing and L∗-based testing in a given time budget. Our algorithm also reaches peak coverage faster than both random and L∗-based testing.
 
 ## Target
 
-    测试目标：安卓GUI界面测试
+测试目标：安卓GUI界面测试
 
-    优化目标：尽量减少Model Learning时重启APP的次数（因为重启APP一般是需要进行重装，重装耗费的时间占比很大）
+优化目标：尽量减少Model Learning时重启APP的次数（因为重启APP一般是需要进行重装，重装耗费的时间占比很大）
 
-    测试想法：利用代码覆盖率进行引导，加速测试（文中认为，在GUI层面上代码覆盖率其实和User Interface Coverage效果是等价的，所以引导方式可以换成User Interface Coverage进行引导）
+测试想法：利用代码覆盖率进行引导，加速测试（文中认为，在GUI层面上代码覆盖率其实和User Interface Coverage效果是等价的，所以引导方式可以换成User Interface Coverage进行引导）
 
 ## Algorithm
 
@@ -49,7 +49,7 @@ Conference: Proceedings of the 2013 ACM SIGPLAN international conference on Obje
 
 ### 结束条件：
 
-    如果在运行中发现找不到frontier-state，则认为此时所有的未知路径都已经被探索完成，表示状态机的学习已经完成。但是此时的学习仍然可能存在问题，**需要进行一致性查询（和L\*中的类似）。** 同时为了确保状态机的学习不会陷入到无限递归的状态，可以设置一个最大长度限制，当到达这个最大长度限制之后就进行重置
+​	如果在运行中发现找不到frontier-state，则认为此时所有的未知路径都已经被探索完成，表示状态机的学习已经完成。但是此时的学习仍然可能存在问题，**需要进行一致性查询（和L\*中的类似）。** 同时为了确保状态机的学习不会陷入到无限递归的状态，可以设置一个最大长度限制，当到达这个最大长度限制之后就进行重置
 
 ### 一致性检查：
 
