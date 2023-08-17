@@ -39,7 +39,7 @@ We show the effectiveness of our learning-based fuzzing technique in a case stud
 
 核心想法：用主动学习算法学习一个状态机，然后在model的基础上进行fuzz，观察fuzz的结果和状态机是否产生不一致的现象。**好处**是本文只需要学习一个状态机就够了（相比参考文献[5]里需要学习多个状态机进行两两对比，本文的方法学习成本要低一些）。整体过程分为learning和fuzzing两个步骤。
 
-![image-20230810174700211](C:\Users\付文轩\AppData\Roaming\Typora\typora-user-images\image-20230810174700211.png)
+![image-20230810174700211](../Images/image-20230810174700211.png)
 
 **Learning阶段面临的问题：**
 
