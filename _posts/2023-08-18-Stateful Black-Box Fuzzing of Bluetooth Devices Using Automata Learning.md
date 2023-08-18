@@ -31,7 +31,7 @@ Fuzzing (aka fuzz testing) shows promising results in security testing. The adva
 
 BLE是蓝牙4.2版本的一个部分，该协议支持蓝牙在低功耗设备上使用。与普通蓝牙协议不同，该协议具有不同的协议栈。
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/35379821/1692238805354-2b78876b-540f-4caf-a30e-b524ccc26b15.png)
+![img](../Images/Snipaste_2023-08-18_11-35-48.jpg)
 
 上图是BLE的工作流程示意图
 
@@ -39,7 +39,7 @@ BLE是蓝牙4.2版本的一个部分，该协议支持蓝牙在低功耗设备�
 
 ## 3.2. Methodology
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/35379821/1692241366262-3f17fd2a-f42d-4e70-9739-c6f471caa360.png)
+![img](../Images/Snipaste_2023-08-18_11-35-30.jpg)
 
 整体框架分为两部分：Model Learning和Fuzzing Test，共有3个component：系统接口(system interface)，
 
