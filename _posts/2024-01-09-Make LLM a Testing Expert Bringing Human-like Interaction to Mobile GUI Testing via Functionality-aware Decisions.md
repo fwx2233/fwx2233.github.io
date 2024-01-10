@@ -7,6 +7,10 @@ author: author1
 
 # Make LLM a Testing Expert: Bringing Human-like Interaction to Mobile GUI Testing via Functionality-aware Decisions
 
+利用大语言模型去做安卓GUI界面测试的文章
+
+
+
 ## 作者信息
 
 ![image-20240109105517171](../Images/image-20240109105517171.png)
@@ -27,7 +31,7 @@ Automated Graphical User Interface (GUI) testing plays a crucial role in ensurin
 
 ## 方案架构
 
-<img src="../Images/image-20240109105742943.png" alt="image-20240109105742943" style="zoom: 33%;" />
+![image-20240109105742943](..\Images\image-20240109105742943.png)
 
 在这篇文章中，作者提出了一个名为GPTDroid的框架，它将自动化移动应用程序GUI测试问题视为一个问答（Q&A）任务，并利用大型语言模型（LLM）来进行移动GUI测试。GPTDroid的实现框架包括以下步骤：
 
@@ -60,11 +64,11 @@ Automated Graphical User Interface (GUI) testing plays a crucial role in ensurin
 
 为了评估GPTDroid的有效性和实用性，作者在93个流行的Android应用程序中进行了实验，共发现了143个缺陷。与10个常用和最先进的基线方法相比，GPTDroid在活动覆盖率和代码覆盖率方面分别提高了32%和20%，达到了75%的活动覆盖率和66%的代码覆盖率。由于GPTDroid能够覆盖更多的活动，因此该方法可以比最佳基线方法更快地检测到31%的缺陷。除了GPTDroid的准确性外，作者还在Google Play中检测了未见过的崩溃缺陷，共发现了53个崩溃缺陷，其中35个已被开发人员确认和修复，其余仍在等待确认。作者进一步对实验结果进行了定性分析，总结了4个发现，包括通过长时间的有意义的测试跟踪进行功能感知的探索，功能感知的优先级，有效的文本输入和复合操作。
 
-<img src="../Images/image-20240109110730282.png" alt="image-20240109110730282" style="zoom:50%;" />
+![image-20240109110730282](..\Images\image-20240109110730282.png)
 
-<img src="../Images/image-20240109110742970.png" alt="image-20240109110742970" style="zoom:50%;" />
+![image-20240109110742970](..\Images\image-20240109110742970.png)
 
-<img src="../Images/image-20240109110752238.png" alt="image-20240109110752238" style="zoom:50%;" />
+![image-20240109110752238](..\Images\image-20240109110752238.png)
 
 
 
