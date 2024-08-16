@@ -19,7 +19,7 @@ author: author1
 
 ## 作者信息
 
-![image-20240806141720378](..\Images\IOTMEDIATOR\Snipaste_2024-08-15_17-52-26.png)
+![image-20240806141720378](../Images/IOTMEDIATOR/Snipaste_2024-08-15_17-52-26.png)
 
 
 
@@ -28,7 +28,7 @@ author: author1
 A smart home involves a variety of entities, such as IoT devices, automation applications, humans, voice assistants, and companion apps. These entities interact in the same physical environment, which can yield undesirable and even hazardous results, called IoT interaction threats. Existing work on interaction threats is limited to considering automation apps, ignoring other IoT control channels, such as voice commands, companion apps, and physical operations. Second, it becomes increasingly common that a smart home utilizes multiple IoT platforms, each of which has a partial view of device states and may issue conflicting commands. Third, compared to detecting interaction threats, their handling is much less studied. Prior work uses generic handling policies, which are unlikely to fit all homes. We present IOTMEDIATOR, which provides accurate threat detection and threat-tailored handling in multiplatform multi-control-channel homes. Our evaluation in two real-world homes demonstrates that IOTMEDIATOR significantly outperforms prior state-of-the-art work.
 
 ## CAI and CMAI
-![image-cai-and-cmai](..\Images\IOTMEDIATOR\Snipaste_2024-08-15_17-56-58.png)
+![image-cai-and-cmai](../Images/IOTMEDIATOR/Snipaste_2024-08-15_17-56-58.png)
 
 CAI：其实和标题中的Multi-Platform基本是一个含义，对应着现在的物联网设备有很多家厂商、很多的APP，可能同一个设备会有多个APP控制；或者不同平台控制各自的设备，但是这些设备之间可能会有交互（可以看作是平台之间规则的交互）
 
@@ -53,7 +53,7 @@ CMAI：也就是多控制通道，包括有云平台控制（如自动化规则�
 3. Threat-tailored handling is needed. 之前的方法有让用户重写的、重新配置的（静态），也有制定的一些policies强制在运行过程中需要遵循的。
 
 ## Architecture of IoTMediator
-![archi](..\Images\IOTMEDIATOR\Snipaste_2024-08-16_14-05-20.png)
+![archi](../Images/IOTMEDIATOR/Snipaste_2024-08-16_14-05-20.png)
 
 如上图所示是IoTMediator的架构，可以看见本文工作是运行在设备和平台之间，充当中继器（甚至是网关）的角色，其共分为三个部分：Messenger, Threat Detection, Threat Handling。
 
@@ -79,14 +79,14 @@ CMAI：也就是多控制通道，包括有云平台控制（如自动化规则�
 
 任何一条自动化规则可以表示为R _i_ = ⟨T _i_,C _i_, A _i_⟩ (i = 1, 2)的形式，其中T表示trigger，C表示condition，A表示action。则R _1_, R _2_可能存在的交互形式如下：
 
-![CAI-interception](..\Images\IOTMEDIATOR\Snipaste_2024-08-16_14-25-52.png)
+![CAI-interception](../Images/IOTMEDIATOR/Snipaste_2024-08-16_14-25-52.png)
 
 图中具体符号的含义为：
-![symbol-sym](..\Images\IOTMEDIATOR\Snipaste_2024-08-16_14-26-38.png)
+![symbol-sym](../Images/IOTMEDIATOR/Snipaste_2024-08-16_14-26-38.png)
 
 3. 识别CMAI
 形式化表示为：R _i_ = ⟨c _i_,C _i_, A _i_⟩ (i = 1, 2)，其中c表示manual control，可能存在的交互形式如下：
-![CMAI-interception](..\Images\IOTMEDIATOR\Snipaste_2024-08-16_14-27-54.png)
+![CMAI-interception](../Images/IOTMEDIATOR/Snipaste_2024-08-16_14-27-54.png)
 
 #### Dynamic verification
 通过静态分析筛选candidate具有快速识别潜在交互案例的优点，但不能精确确定candidate是否实际发生在真实环境中。例如某个规则在下午6点打开空间加热器不会导致开窗，除非加热器将温度传感器的读数提高到阈值以上(注意温度传感器可能与加热器有一段距离)。
@@ -99,7 +99,7 @@ CMAI：也就是多控制通道，包括有云平台控制（如自动化规则�
 
 给定一个interaction candidate后，dynamic verfication组件会根据一些断言来判断是否真正产生了影响，具体断言如下：
 
-![assertions](..\Images\IOTMEDIATOR\Snipaste_2024-08-16_14-34-57.png)
+![assertions](../Images/IOTMEDIATOR/Snipaste_2024-08-16_14-34-57.png)
 
 > 具体如何利用这些断言进行判断，参考文章中4.2.2节的详细内容
 
@@ -110,7 +110,7 @@ CMAI：也就是多控制通道，包括有云平台控制（如自动化规则�
 
 本文工作则是根据当前交互威胁的类型生成几种可行的解决措施，让用户来抉择，生成的模式如下：
 
-![options](..\Images\IOTMEDIATOR\Snipaste_2024-08-16_14-42-11.png)
+![options](../Images/IOTMEDIATOR/Snipaste_2024-08-16_14-42-11.png)
 
 关于生成的具体样例、实验部分、limitation等可以去原文中参考，这里就不赘述了。
 
