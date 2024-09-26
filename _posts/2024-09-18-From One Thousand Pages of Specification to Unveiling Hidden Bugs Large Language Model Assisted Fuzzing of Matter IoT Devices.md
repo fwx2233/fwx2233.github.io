@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fuzzing generator
+title: LLM fuzz
 tags: [paper]
 author: author1
 ---
