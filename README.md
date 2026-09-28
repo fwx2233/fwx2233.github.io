@@ -39,6 +39,8 @@ npm test
 浏览器测试覆盖桌面和手机布局下的文章跳转、后退、菜单、作者介绍、分页和公式渲染。
 更新前端源码或依赖后，请同时提交 `npm run build` 生成的资源。
 
+KaTeX、Web Font Loader 和 html5shiv 从 npm 锁文件同步到 `assets/bower_components/`，保留旧主题的资源网址；无需运行 Bower。
+
 构建检查会验证历史文章网址、图片等本地资源、分页、个人介绍和未发布目录的排除规则。
 
 ## 自动部署

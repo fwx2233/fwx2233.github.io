@@ -3,15 +3,16 @@
   "version": "7.5.2",
   "description": "Build tools for Wenxuan Fu’s personal blog, based on Hydejack 7.5.2.",
   "scripts": {
-    "build": "npm run build:js && npm run build:css",
+    "build": "npm run build:vendor && npm run build:js && npm run build:css",
     "build:js": "webpack --mode production",
     "build:css": "node .scripts/build-css.js",
     "watch:js": "webpack --mode development --watch",
     "watch:css": "onchange '_sass/**/*.pre.scss' -- npm run build:css",
     "serve": "bundle exec jekyll serve --host=127.0.0.1",
-    "lint": "eslint _js/src webpack.config.js .scripts/build-css.js",
+    "lint": "eslint _js/src webpack.config.js .scripts/*.js",
     "check:site": "python3 .scripts/check-site.py",
-    "test": "playwright test --config .scripts/playwright.config.cjs"
+    "test": "playwright test --config .scripts/playwright.config.cjs",
+    "build:vendor": "node .scripts/sync-vendor.js"
   },
   "config": {
     "port": 4000
@@ -22,25 +23,28 @@
   "devDependencies": {
     "@babel/core": "8.0.6",
     "@babel/preset-env": "8.0.6",
-    "babel-loader": "10.1.1",
-    "webpack": "5.111.1",
-    "webpack-cli": "7.2.3",
-    "css-loader": "7.1.5",
-    "style-loader": "4.0.0",
-    "eslint": "10.11.0",
     "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "babel-loader": "10.1.1",
+    "css-loader": "7.1.5",
+    "eslint": "10.11.0",
     "globals": "17.12.0",
     "onchange": "7.1.0",
-    "@playwright/test": "1.63.0"
+    "style-loader": "4.0.0",
+    "webpack": "5.111.1",
+    "webpack-cli": "7.2.3"
   },
   "dependencies": {
     "color": "5.0.3",
     "core-js": "3.50.0",
     "elem-dataset": "2.0.0",
+    "html5shiv": "3.7.3",
     "hy-drawer": "1.0.0-uvw.0",
     "hy-push-state": "1.0.0-uvw.0",
+    "katex": "0.18.9",
     "rxjs": "7.8.2",
-    "web-animations-js": "2.3.2"
+    "web-animations-js": "2.3.2",
+    "webfontloader": "1.6.28"
   },
   "repository": {
     "type": "git",
