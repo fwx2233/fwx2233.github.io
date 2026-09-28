@@ -1,6 +1,6 @@
 ---
 layout: list
-title: Blogs
+title: 学习博客
 slug: blog
 menu: true
 order: 2

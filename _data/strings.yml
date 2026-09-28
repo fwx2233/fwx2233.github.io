@@ -10,30 +10,30 @@
 
 # Free version
 # ---------------------------------------------------------------------------------------
-home:                  Home
-pages:                 Pages
-posts:                 Posts
-about:                 About
-related_posts:         Related Posts
-other_projects:        Other Projects
-comments:              Comments
-jump_to:               Jump to
-navigation:            Navigation
-social:                Social
-links:                 Links
-pagination:            Pagination
-newer:                 Newer
-older:                 Older
-back:                  Back
-permalink:             Permalink
+home:                  首页
+pages:                 页面
+posts:                 文章
+about:                 关于我
+related_posts:         相关文章
+other_projects:        其他项目
+comments:              评论
+jump_to:               跳转到
+navigation:            导航
+social:                联系方式
+links:                 链接
+pagination:            分页
+newer:                 较新文章
+older:                 较早文章
+back:                  返回
+permalink:             永久链接
 permalink_icon:        icon-link
-templates:             Templates (for web app)
+templates:             页面交互模板
 
-loading:               Loading…
-redirecting:           Redirecting…
+loading:               加载中…
+redirecting:           跳转中…
 
 continue_reading:      >
-  Continue reading <!--post_title-->
+  继续阅读 <!--post_title-->
 
 cookies_banner:
   text:                >
@@ -41,34 +41,34 @@ cookies_banner:
   okay:                Okay
 
 not_found:
-  title:               '404: Page Not Found'
+  title:               '404：页面未找到'
   message:             |
-    Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
-    <!--home_link--> to try finding it again.
-  home_link:           Head back home
+    这个地址对应的页面不存在或已经移动。
+    你可以<!--home_link-->，查找其他文章。
+  home_link:           返回首页
 
 error:
-  title:               Error
+  title:               加载失败
   message:             |
-    Sorry, an error occurred while loading <!--link-->.
+    加载 <!--link--> 时发生错误，请刷新页面后重试。
 
 # Separators
 # ---------------------------------------------------------------------------------------
 colon:                 ':'
 separator:             '|'
-category_start:        'in '
-category_spearator:    ' / '
-tag_start:             'on '
+category_start:        '分类：'
+category_separator:    ' / '
+tag_start:             '标签：'
 tag_separator:         ', '
 
 
 # Date formats
 # ---------------------------------------------------------------------------------------
 date_formats:
-  post:                '%d %b %Y'
-  related_post:        '%d %b %Y'
+  post:                '%Y年%m月%d日'
+  related_post:        '%Y年%m月%d日'
   list_group_by:       '%Y'
-  list_entry:          '%d %b'
+  list_entry:          '%m月%d日'
   project:             '%Y'
   projects_group_by:   '%Y'
   resume:              '%b %Y'

@@ -1,8 +1,6 @@
 ---
 layout: list
-title: Posts
+title: 文章归档
 description: >
-  This is the `list` layout for showing blog posts, which shows just the title and groups them by year of publication.
-  Check out the `blog` layout for comparison.
-  Open `posts.md` to edit this text.
+  按年份浏览全部论文阅读笔记与学习博客。
 ---

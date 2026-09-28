@@ -1,6 +1,6 @@
 ---
 layout: list
-title: Paper notes
+title: 论文笔记
 slug: paper
 menu: true
 order: 1
