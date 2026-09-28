@@ -177,6 +177,9 @@ exclude:
   - README.md
   - CHANGELOG.md
   - webpack.config.js
+  - eslint.config.mjs
+  - test-results
+  - playwright-report
   - jekyll-theme-hydejack.gemspec
 include:
   - LICENSE.md

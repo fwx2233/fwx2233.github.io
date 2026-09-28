@@ -82,7 +82,7 @@ export function animate(el, keyframes, options) {
 // Returns a promise that can be resolved (rejected) after the fact,
 // by calling its `resolve` (`reject`) function.
 export function getResolvablePromise() {
-  let resolve, reject; // eslint-disable-line one-var, one-var-declaration-per-line
+  let resolve, reject;
   const promise = new Promise((res, rej) => { resolve = res; reject = rej; });
   promise.resolve = resolve;
   promise.reject = reject;

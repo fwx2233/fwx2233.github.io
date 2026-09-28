@@ -45,3 +45,6 @@ vendor/bundle
 _zip
 
 .jekyll-cache/
+
+test-results/
+playwright-report/

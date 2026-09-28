@@ -24,12 +24,20 @@ bundle install
 bundle exec jekyll serve
 ```
 
-在浏览器中打开 <http://localhost:4000/>。生产构建与校验：
+在浏览器中打开 <http://localhost:4000/>。生产构建与校验需要 `.node-version` 指定的 Node.js 24.21.0：
 
 ```sh
+npm ci
+npm run lint
+npm run build
 JEKYLL_ENV=production bundle exec jekyll build
-python3 .scripts/check-site.py
+npm run check:site
+npx playwright install --no-shell chromium
+npm test
 ```
+
+浏览器测试覆盖桌面和手机布局下的文章跳转、后退、菜单、作者介绍、分页和公式渲染。
+更新前端源码或依赖后，请同时提交 `npm run build` 生成的资源。
 
 构建检查会验证历史文章网址、图片等本地资源、分页、个人介绍和未发布目录的排除规则。
 

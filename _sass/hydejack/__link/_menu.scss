@@ -49,11 +49,11 @@
 
 #_menu {
   @media screen and (min-width: $break-point-3) {
-//     position: absolute; 
-//     left: -9999px; 
-    &:focus { position: static; } 
+//     position: absolute;
+//     left: -9999px;
+    &:focus { position: static; }
   }
-  @media print { display: none; } 
+  @media print { display: none; }
 }
 
 

@@ -30,18 +30,18 @@
 // SOFTWARE.
 
 table:not(.highlight) {
-  
 
-  
+
+
   display: block;
   vertical-align: top;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  
 
-  
 
-  
+
+
+
   thead {
     background-color: $body-bg;
   }
@@ -61,7 +61,7 @@ table:not(.highlight) {
   tbody tr:nth-child(odd) th {
     background-color: $gray-bg;
   }
-  
+
 }
 
 

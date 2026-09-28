@@ -45,7 +45,7 @@ function renderKatex(el, tex) {
     }
   } catch (e) {
     // TODO: remove in production builds?
-    console.error(e); // eslint-disable-line no-console
+    console.error(e);
   } finally {
     el.style.willChange = '';
   }

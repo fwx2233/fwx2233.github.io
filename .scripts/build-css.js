@@ -68,13 +68,13 @@ async function getFiles(dir) {
         const header = genHeader([path, basename(file)].join('/'));
 
         return Promise.all([
-          writeFile(resolve(dir, '__inline', filename), header + inline, ENC),
-          writeFile(resolve(dir, '__link', filename), header + defer, ENC),
+          writeFile(resolve(dir, '__inline', filename), header + inline.replace(/[ \t]+$/gm, ''), ENC),
+          writeFile(resolve(dir, '__link', filename), header + defer.replace(/[ \t]+$/gm, ''), ENC),
         ]);
       }));
     process.exit(0);
   } catch (e) {
-    console.error(e); // eslint-disable-line
+    console.error(e);
     process.exit(1);
   }
 }());

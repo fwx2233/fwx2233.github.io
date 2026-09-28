@@ -1,0 +1,263 @@
+/*!
+  {
+    "name": "CSS Animations",
+    "property": "cssanimations",
+    "caniuse": "css-animation",
+    "polyfills": ["transformie", "csssandpaper"],
+    "tags": ["css"],
+    "warnings": ["Android < 4 will pass this test, but can only animate a single property at a time"],
+    "notes": [{
+      "name" : "Article: 'Dispelling the Android CSS animation myths'",
+      "href": "https://goo.gl/OGw5Gm"
+    }]
+  }
+  !*/
+
+/*!
+  {
+    "name": "CSS Font rem Units",
+    "caniuse": "rem",
+    "authors": ["nsfmc"],
+    "property": "cssremunit",
+    "tags": ["css"],
+    "builderAliases": ["css_remunit"],
+    "notes": [{
+      "name": "W3C Spec",
+      "href": "https://www.w3.org/TR/css3-values/#relative0"
+    },{
+      "name": "Font Size with rem by Jonathan Snook",
+      "href": "http://snook.ca/archives/html_and_css/font-size-with-rem"
+    }]
+  }
+  !*/
+
+/*!
+  {
+    "name": "CSS Opacity",
+    "caniuse": "css-opacity",
+    "property": "opacity",
+    "tags": ["css"]
+  }
+  !*/
+
+/*!
+  {
+    "name": "CSS Pointer Events",
+    "caniuse": "pointer-events",
+    "property": "csspointerevents",
+    "authors": ["ausi"],
+    "tags": ["css"],
+    "builderAliases": ["css_pointerevents"],
+    "notes": [
+      {
+        "name": "MDN Docs",
+        "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events"
+      },{
+        "name": "Test Project Page",
+        "href": "https://ausi.github.com/Feature-detection-technique-for-pointer-events/"
+      },{
+        "name": "Test Project Wiki",
+        "href": "https://github.com/ausi/Feature-detection-technique-for-pointer-events/wiki"
+      },
+      {
+        "name": "Related Github Issue",
+        "href": "https://github.com/Modernizr/Modernizr/issues/80"
+      }
+    ]
+  }
+  !*/
+
+/*!
+  {
+    "name": "CSS Transforms",
+    "property": "csstransforms",
+    "caniuse": "transforms2d",
+    "tags": ["css"]
+  }
+  !*/
+
+/*!
+  {
+    "name": "CustomEvent",
+    "property": "customevent",
+    "tags": ["customevent"],
+    "authors": ["Alberto Elias"],
+    "notes": [{
+      "name": "W3C DOM reference",
+      "href": "https://www.w3.org/TR/DOM-Level-3-Events/#interface-CustomEvent"
+    }, {
+      "name": "MDN documentation",
+      "href": "https://developer.mozilla.org/en/docs/Web/API/CustomEvent"
+    }],
+    "polyfills": ["eventlistener"]
+  }
+  !*/
+
+/*!
+  {
+    "name": "Document Fragment",
+    "property": "documentfragment",
+    "notes": [{
+      "name": "W3C DOM Level 1 Reference",
+      "href": "https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-B63ED1A3"
+    }, {
+      "name": "SitePoint Reference",
+      "href": "http://reference.sitepoint.com/javascript/DocumentFragment"
+    }, {
+      "name": "QuirksMode Compatibility Tables",
+      "href": "http://www.quirksmode.org/m/w3c_core.html#t112"
+    }],
+    "authors": ["Ron Waldon (@jokeyrhyme)"],
+    "knownBugs": ["false-positive on Blackberry 9500, see QuirksMode note"],
+    "tags": []
+  }
+  !*/
+
+/*!
+  {
+    "name": "ES6 Promises",
+    "property": "promises",
+    "caniuse": "promises",
+    "polyfills": ["es6promises"],
+    "authors": ["Krister Kari", "Jake Archibald"],
+    "tags": ["es6"],
+    "notes": [{
+      "name": "The ES6 promises spec",
+      "href": "https://github.com/domenic/promises-unwrapping"
+    },{
+      "name": "Chromium dashboard - ES6 Promises",
+      "href": "https://www.chromestatus.com/features/5681726336532480"
+    },{
+      "name": "JavaScript Promises: There and back again - HTML5 Rocks",
+      "href": "http://www.html5rocks.com/en/tutorials/es6/promises/"
+    }]
+  }
+  !*/
+
+/*!
+  {
+    "name": "Event Listener",
+    "property": "eventlistener",
+    "authors": ["Andrew Betts (@triblondon)"],
+    "notes": [{
+      "name": "W3C Spec",
+      "href": "https://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-Registration-interfaces"
+    }],
+    "polyfills": ["eventlistener"]
+  }
+  !*/
+
+/*!
+  {
+    "name": "History API",
+    "property": "history",
+    "caniuse": "history",
+    "tags": ["history"],
+    "authors": ["Hay Kranen", "Alexander Farkas"],
+    "notes": [{
+      "name": "W3C Spec",
+      "href": "https://www.w3.org/TR/html51/browsers.html#the-history-interface"
+    }, {
+      "name": "MDN documentation",
+      "href": "https://developer.mozilla.org/en-US/docs/Web/API/window.history"
+    }],
+    "polyfills": ["historyjs", "html5historyapi"]
+  }
+  !*/
+
+/*!
+  {
+    "name": "QuerySelector",
+    "property": "queryselector",
+    "caniuse": "queryselector",
+    "tags": ["queryselector"],
+    "authors": ["Andrew Betts (@triblondon)"],
+    "notes": [{
+      "name" : "W3C Selectors reference",
+      "href": "https://www.w3.org/TR/selectors-api/#queryselectorall"
+    }],
+    "polyfills": ["css-selector-engine"]
+  }
+  !*/
+
+/*!
+  {
+    "name": "Touch Events",
+    "property": "touchevents",
+    "caniuse" : "touch",
+    "tags": ["media", "attribute"],
+    "notes": [{
+      "name": "Touch Events spec",
+      "href": "https://www.w3.org/TR/2013/WD-touch-events-20130124/"
+    }],
+    "warnings": [
+      "Indicates if the browser supports the Touch Events spec, and does not necessarily reflect a touchscreen device"
+    ],
+    "knownBugs": [
+      "False-positive on some configurations of Nokia N900",
+      "False-positive on some BlackBerry 6.0 builds – https://github.com/Modernizr/Modernizr/issues/372#issuecomment-3112695"
+    ]
+  }
+  !*/
+
+/*!
+  {
+    "name": "classList",
+    "caniuse": "classlist",
+    "property": "classlist",
+    "tags": ["dom"],
+    "builderAliases": ["dataview_api"],
+    "notes": [{
+      "name": "MDN Docs",
+      "href": "https://developer.mozilla.org/en/DOM/element.classList"
+    }]
+  }
+  !*/
+
+/*!
+  {
+    "name": "matchMedia",
+    "property": "matchmedia",
+    "caniuse" : "matchmedia",
+    "tags": ["matchmedia"],
+    "authors": ["Alberto Elias"],
+    "notes": [{
+      "name": "W3C CSSOM View Module",
+      "href": "https://drafts.csswg.org/cssom-view/#the-mediaquerylist-interface"
+    }, {
+      "name": "MDN documentation",
+      "href": "https://developer.mozilla.org/en-US/docs/Web/API/Window.matchMedia"
+    }],
+    "polyfills": ["matchmediajs"]
+  }
+  !*/
+
+/*!
+  {
+    "name": "requestAnimationFrame",
+    "property": "requestanimationframe",
+    "aliases": ["raf"],
+    "caniuse": "requestanimationframe",
+    "tags": ["animation"],
+    "authors": ["Addy Osmani"],
+    "notes": [{
+      "name": "W3C spec",
+      "href": "https://www.w3.org/TR/animation-timing/"
+    }],
+    "polyfills": ["raf"]
+  }
+  !*/
+
+/*!
+ *  __  __                __                                     __
+ * /\ \/\ \              /\ \             __                    /\ \
+ * \ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ *  \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+ *   \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+ *    \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+ *     \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+ *                 /\___/                \ \____/
+ *                 \/__/                  \/___/
+ *
+ * Powered by Hydejack v7.5.2 <https://qwtel.com/hydejack/>
+ */
