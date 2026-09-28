@@ -171,6 +171,13 @@ exclude:
   - node_modules
   - package.json
   - package-lock.json
+  - temp
+  - docs
+  - forms-by-example.md
+  - README.md
+  - CHANGELOG.md
+  - webpack.config.js
+  - jekyll-theme-hydejack.gemspec
 include:
   - LICENSE.md
 
