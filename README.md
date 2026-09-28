@@ -15,7 +15,14 @@
 
 ## 本地预览
 
-使用 `.ruby-version` 指定的 Ruby 4.0.7 和 `Gemfile.lock` 锁定的 Bundler 4.0.21：
+使用 `.ruby-version` 指定的 Ruby 4.0.7 和 `Gemfile.lock` 锁定的 Bundler 4.0.21。
+本次维护已在当前 Linux 机器安装对应工具链，可以先激活：
+
+```sh
+export PATH="$HOME/.local/share/blog-toolchains/node/bin:/opt/hostedtoolcache/Ruby/4.0.7/x64/bin:$PATH"
+```
+
+其他机器可通过版本管理器安装并激活 `.ruby-version` 与 `.node-version` 指定的版本。然后运行：
 
 ```sh
 gem install bundler -v 4.0.21
@@ -58,3 +65,7 @@ GitHub 仓库的 **Settings → Pages → Source** 应选择 **GitHub Actions**�
 
 本站基于 [Hydejack 7.5.2](https://github.com/hydecorp/hydejack) 的本地主题源码定制。
 原主题的许可证和第三方声明保留在 `LICENSE.md`、`NOTICE.md` 和 `licenses/` 中；具体适用范围以这些文件及源码声明为准。
+
+## 升级记录
+
+版本、验证方式及受上游限制暂不能继续升级的依赖，见 [维护与升级记录](docs/UPGRADE_NOTES.md)。

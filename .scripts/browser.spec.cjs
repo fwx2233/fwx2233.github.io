@@ -7,9 +7,11 @@ test('articles, navigation, author profile and math work after upgrading', async
   await page.waitForFunction(() => window._pushState && window._drawer);
   await expect(page.locator('article')).toHaveCount(5);
 
+  await page.evaluate(() => { window.__blogNavigationMarker = true; });
   await page.locator('article h1 a').first().click();
   await expect(page).toHaveURL(/\/2024\/10\/09\//);
   await expect(page.locator('#_main article img').first()).toBeVisible();
+  expect(await page.evaluate(() => window.__blogNavigationMarker)).toBe(true);
   await page.goBack();
   await expect(page).toHaveURL('http://127.0.0.1:4173/');
   await expect(page.locator('article')).toHaveCount(5);

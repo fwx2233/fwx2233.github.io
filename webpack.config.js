@@ -10,6 +10,11 @@ module.exports = (_env, argv) => ({
     filename: `${name}-${version}.js`,
   },
   devtool: argv.mode === 'production' ? false : 'source-map',
+  resolve: {
+    // rxjs-create-tween accepts RxJS >=6.5.2 but its ESM build still imports
+    // the removed private entry point. Its Observable API is exported publicly.
+    alias: { 'rxjs/_esm5$': require.resolve('rxjs') },
+  },
   module: {
     rules: [
       {
