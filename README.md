@@ -15,14 +15,28 @@
 
 ## 本地预览
 
-安装与 `Gemfile.lock` 兼容的 Ruby 和 Bundler 后运行：
+使用 `.ruby-version` 指定的 Ruby 4.0.7 和 `Gemfile.lock` 锁定的 Bundler 4.0.21：
 
 ```sh
+gem install bundler -v 4.0.21
+bundle config set --local path vendor/bundle
 bundle install
 bundle exec jekyll serve
 ```
 
-在浏览器中打开 <http://localhost:4000/>。前端构建工具的升级和环境固定正在分阶段进行，后续提交会补充对应命令。
+在浏览器中打开 <http://localhost:4000/>。生产构建与校验：
+
+```sh
+JEKYLL_ENV=production bundle exec jekyll build
+python3 .scripts/check-site.py
+```
+
+构建检查会验证历史文章网址、图片等本地资源、分页、个人介绍和未发布目录的排除规则。
+
+## 自动部署
+
+`.github/workflows/pages.yml` 在每次推送 `main` 时构建、校验并部署网站；Pull Request 只执行构建和校验。
+GitHub 仓库的 **Settings → Pages → Source** 应选择 **GitHub Actions**，以使用仓库锁定的 Jekyll 4 环境。
 
 ## 写作与发布
 

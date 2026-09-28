@@ -190,7 +190,7 @@ plugins:
   # - jekyll-default-layout
   - jekyll-feed
   # - jekyll-gist
-  # - jekyll-optional-front-matter
+  - jekyll-optional-front-matter
   - jekyll-paginate
   # - jekyll-readme-index
   # - jekyll-redirect-from
@@ -198,7 +198,7 @@ plugins:
   # - jekyll-remote-theme
   - jekyll-seo-tag
   - jekyll-sitemap
-  # - jekyll-titles-from-headings
+  - jekyll-titles-from-headings
 
 # Theme
 # ---------------------------------------------------------------------------------------
