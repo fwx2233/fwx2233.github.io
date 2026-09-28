@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Import what we need.
-import 'core-js/fn/function/bind';
+import 'core-js/es/function/bind';
 
 import { Observable } from 'rxjs';
 
@@ -65,7 +65,7 @@ export function empty() {
 // An observable wrapper for the WebAnimations API.
 // Will return an observable that emits once when the animation finishes.
 export function animate(el, keyframes, options) {
-  return Observable.create((observer) => {
+  return new Observable((observer) => {
     const anim = el.animate(keyframes, options);
 
     anim.addEventListener('finish', (e) => {

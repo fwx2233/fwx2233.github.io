@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import 'core-js/fn/array/find';
-import 'core-js/fn/function/bind';
+import 'core-js/es/array/find';
+import 'core-js/es/function/bind';
 
 import Color from 'color';
 

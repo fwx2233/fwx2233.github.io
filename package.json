@@ -34,13 +34,13 @@
     "@playwright/test": "1.63.0"
   },
   "dependencies": {
-    "color": "3.0.0",
-    "core-js": "2.5.7",
-    "elem-dataset": "1.1.1",
-    "hy-drawer": "1.0.0-pre.21",
-    "hy-push-state": "1.0.0-pre.21",
-    "rxjs": "6.2.1",
-    "web-animations-js": "2.3.1"
+    "color": "5.0.3",
+    "core-js": "3.50.0",
+    "elem-dataset": "2.0.0",
+    "hy-drawer": "1.0.0-uvw.0",
+    "hy-push-state": "1.0.0-uvw.0",
+    "rxjs": "7.8.2",
+    "web-animations-js": "2.3.2"
   },
   "repository": {
     "type": "git",

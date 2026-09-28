@@ -16,7 +16,7 @@
 
 // ## Includes
 // First, we patch the environment with some ES6+ functions we intend to use.
-import 'core-js/fn/function/bind';
+import 'core-js/es/function/bind';
 
 // We include our main component, hy-drawer,
 // in both the vanilla JS and the WebComponent version (will decide later which one to use).

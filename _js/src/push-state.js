@@ -22,10 +22,10 @@
 
 // ## Includes
 // First, we patch the environment with some ES6+ functions we intend to use.
-import 'core-js/fn/array/for-each';
-import 'core-js/fn/function/bind';
-import 'core-js/fn/object/assign';
-import 'core-js/fn/string/includes';
+import 'core-js/es/array/for-each';
+import 'core-js/es/function/bind';
+import 'core-js/es/object/assign';
+import 'core-js/es/string/includes';
 
 // We include our main component, hy-push-state,
 // in both the vanilla JS and the WebComponent version (will decide later which one to use).
@@ -351,7 +351,7 @@ if (!window._noPushState && hasFeatures(REQUIREMENTS) && !isFirefoxIOS) {
   start$.pipe(
     map((context) => {
       const promise = getResolvablePromise();
-      context.waitUntil(promise);
+      context.transitionUntil(promise);
       return promise;
     }),
     // Every click starts a timer that lasts as long
