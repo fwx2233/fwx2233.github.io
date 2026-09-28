@@ -8,9 +8,9 @@ author1:
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    An undergraduate from Nankai University.
-    
-    Majoring in Information Security.
+    南开大学信息安全专业本科（2019—2023），现为博士研究生。
+
+    研究兴趣：物联网系统漏洞挖掘、LLM/Agent for Security。
 
   # This photo will be used in the about section
   picture:
