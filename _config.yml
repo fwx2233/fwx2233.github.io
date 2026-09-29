@@ -43,7 +43,7 @@ logo:                  /assets/icons/icon.png
 # Duplication is necessary due to the `jekyll-feed`, `jekyll-seo-tag` plugin.
 author:
   name:                Wenxuan Fu
-  email:               335957142@qq.com
+  email:               fuwenxuan@mail.nankai.edu.cn
   # Used by `jekyll-seo-tag`:
   # twitter:             <username>
 
