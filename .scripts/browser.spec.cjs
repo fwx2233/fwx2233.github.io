@@ -21,8 +21,10 @@ test('articles, navigation, author profile and math work after upgrading', async
     await page.waitForFunction(() => window._drawer.opened);
   }
   await page.locator('a.sidebar-nav-item[href="/about/"]').click();
-  await expect(page.locator('#_main')).toContainText('博士研究生');
+  await expect(page.locator('#_main')).toContainText('PhD student');
   await expect(page.locator('#_main')).toContainText('2019');
+  await expect(page.locator('#_main article .message')).toHaveCount(0);
+  await expect(page.locator('#_main article p').filter({ hasText: 'PhD student' })).toHaveCount(1);
 
   await page.goto('/tag/hyde/');
   await expect(page.locator('#_main .related-posts a')).toHaveCount(26);

@@ -27,11 +27,11 @@ title:                 代码鬼才的Blog
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  一个简单的个人空间，平时会在这里放个人阅读论文的笔记等
+  Wenxuan Fu's notes on IoT security, vulnerability discovery, and LLMs and agents for security research.
 
 # A shorter description for the sidebar.
 tagline:               >
-  会将一些论文笔记、心得等分享在这里
+  Paper notes and research reflections on IoT security and AI for security.
 
 # A list of keywords for your blog
 keywords:              []

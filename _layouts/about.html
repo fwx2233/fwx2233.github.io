@@ -36,7 +36,9 @@ layout: base
 
   <h1 class="page-title hr">{{ page.title }}</h1>
 
-  {{ author.about | markdownify }}
+  {% unless page.hide_author_about %}
+    {{ author.about | markdownify }}
+  {% endunless %}
 
   {% include message.html text=page.description hide=page.hide_description alt="" %}
 

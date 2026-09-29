@@ -58,7 +58,7 @@ home_parser = Page()
 home_parser.feed(home)
 if home_parser.lang != "zh-CN" or "The official Hydejack blog" in home:
     errors.append("Homepage language or metadata regressed")
-for text in ("2019", "2023", "博士", "LLM/Agent for Security"):
+for text in ("2019", "2023", "PhD student", "Nankai University", "IoT", "LLMs", "AI agents"):
     if text not in about:
         errors.append(f"Missing profile detail: {text}")
 for required in ("page-2/index.html", "page-8/index.html", "feed.xml", "sitemap.xml",
